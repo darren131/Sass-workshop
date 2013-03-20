@@ -1035,3 +1035,297 @@ $animal_list: puma, sea-slug, egret, salamander;
 .salamander-icon {
   background-image: url("/images/salamander.png");
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+                   _                 _                   _ 
+   ____           | |               | |                 | |
+  / __ \  _____  _| |_ ___ _ __   __| |   __ _ _ __   __| |
+ / / _` |/ _ \ \/ / __/ _ \ '_ \ / _` |  / _` | '_ \ / _` |
+| | (_| |  __/>  <| ||  __/ | | | (_| | | (_| | | | | (_| |
+ \ \__,_|\___/_/\_\\__\___|_| |_|\__,_|  \__,_|_| |_|\__,_|
+  \____/                                                   
+                                                           
+                                       
+
+ _____  _                _           _     _               
+|  __ \| |              | |         | |   | |              
+| |__) | | __ _  ___ ___| |__   ___ | | __| | ___ _ __ ___ 
+|  ___/| |/ _` |/ __/ _ \ '_ \ / _ \| |/ _` |/ _ \ '__/ __|
+| |    | | (_| | (_|  __/ | | | (_) | | (_| |  __/ |  \__ \
+|_|    |_|\__,_|\___\___|_| |_|\___/|_|\__,_|\___|_|  |___/
+                                                           
+*/
+
+/*
+Consider this HTML
+
+<div class="error seriousError">
+  Oh no! You've been hacked!
+</div>
+
+*/
+.error {
+  border: 1px #f00;
+  background-color: #fdd;
+}
+.seriousError {
+  border-width: 3px;
+}
+
+//
+// Use @extend
+//
+.error {
+  border: 1px #f00;
+  background-color: #fdd;
+}
+.seriousError {
+  @extend .error;
+  border-width: 3px;
+}
+
+// compiles to
+.error, .seriousError {
+  border: 1px #f00;
+  background-color: #fdd;
+}
+
+.seriousError {
+  border-width: 3px;
+}
+
+
+//
+// @extend all selectors
+//
+a:hover {
+  text-decoration: underline;
+}
+.hoverlink {
+  @extend a:hover;
+}
+
+// Compiles to
+a:hover, .hoverlink {
+  text-decoration: underline;
+}
+
+//
+// Multiple @extends
+//
+.error {
+  border: 1px #f00;
+  background-color: #fdd;
+}
+.attention {
+  font-size: 3em;
+  background-color: #ff0;
+}
+.seriousError {
+  @extend .error;
+  @extend .attention;
+  border-width: 3px;
+}
+
+// Compiles to
+.error, .seriousError {
+  border: 1px #f00;
+  background-color: #fdd; }
+
+.attention, .seriousError {
+  font-size: 3em;
+  background-color: #ff0; }
+
+.seriousError {
+  border-width: 3px; }
+
+//
+// @extend only selectors (AKA Placeholder selectors)
+//
+
+@mixin clearfix {
+
+  *zoom: 1;
+  &:before, &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+.module {
+  @include clearfix;
+  border: 1px solid red;
+}
+
+#sidebar {
+  @include clearfix;
+  border-right: 1px solid #ccc;
+  float: left;
+  width: 30%;
+}
+
+#content {
+  @include clearfix;
+  float: right;
+  width: 65%;
+}
+
+// Compiles to
+.module {
+  *zoom: 1;
+  border: 1px solid red;
+}
+.module:before, .module:after {
+  content: " ";
+  display: table;
+}
+.module:after {
+  clear: both;
+}
+
+#sidebar {
+  *zoom: 1;
+  border-right: 1px solid #ccc;
+  float: left;
+  width: 30%;
+}
+#sidebar:before, #sidebar:after {
+  content: " ";
+  display: table;
+}
+#sidebar:after {
+  clear: both;
+}
+
+#content {
+  *zoom: 1;
+  float: right;
+  width: 65%;
+}
+#content:before, #content:after {
+  content: " ";
+  display: table;
+}
+#content:after {
+  clear: both;
+}
+
+//
+// The placeholder solution
+//
+%clearfix {
+    *zoom: 1;
+    &:before, &:after {
+      content: " ";
+      display: table;
+    }
+  &:after {
+    clear: both;
+  }
+}
+
+.module {
+  @extend %clearfix;
+  border: 1px solid red;
+}
+
+#sidebar {
+  @extend %clearfix;
+  border-right: 1px solid #ccc;
+  float: left;
+  width: 30%;
+}
+
+#content {
+  @extend %clearfix;
+  float: right;
+  width: 65%;
+}
+
+// Compiles to
+.module, #sidebar, #content {
+  *zoom: 1;
+}
+.module:before, #sidebar:before, #content:before, .module:after, #sidebar:after, #content:after {
+  content: " ";
+  display: table;
+}
+.module:after, #sidebar:after, #content:after {
+  clear: both;
+}
+
+.module {
+  border: 1px solid red;
+}
+
+#sidebar {
+  border-right: 1px solid #ccc;
+  float: left;
+  width: 30%;
+}
+
+#content {
+  float: right;
+  width: 65%;
+}
