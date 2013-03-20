@@ -1,0 +1,71 @@
+/*
+  _____               
+ / ____|              
+| (___   __ _ ___ ___ 
+ \___ \ / _` / __/ __|
+ ____) | (_| \__ \__ \
+|_____/ \__,_|___/___/
+
+                              _
+    /\                       | |      
+   /  \   __ _  ___ _ __   __| | __ _ 
+  / /\ \ / _` |/ _ \ '_ \ / _` |/ _` |
+ / ____ \ (_| |  __/ | | | (_| | (_| |
+/_/    \_\__, |\___|_| |_|\__,_|\__,_|
+          __/ |                       
+         |___/                        
+
+
+ 0. Quick Introductions
+ 1. Introduction to CSS preprocessors
+    - What is a preprocessor
+    - Why use a CSS preprocessor
+    - Some potential problems
+ 2. Describe the modern-day web designer's workflow
+    - Work locally
+    - MAMP/WAMP/ETC
+    - Source control
+    - Staging -> Live
+ 3. Introduce the tools required to start writing Sass
+    - Command line
+    - Scout
+    - Codekit
+    - Compass.app
+ 
+ == BREAK == 
+ 
+ 4. Work with Sass
+    - variables
+    - interpolation
+    - operations
+    - functions
+    - nesting
+    - mixins
+    - placeholders
+    - Sass partials and the manifest
+    - setting up the project
+ 
+ == BREAK ==
+ 
+ 5. Reiterate the importance of OOCSS and "dry" coding methodologies
+    - OOCSS basics
+    - Modular CSS
+    - Elements, modules and layouts
+    - Explore how Sass can combine and minify multiple CSS files
+ 6. Simplify the responsive design workflow with Mixins and placeholders
+    - the respond-to mixin
+    - @content placeholder
+ 
+ == BREAK ==
+ 
+ 7. Introduction to Compass and mixin libraries
+    - Mixin libraries
+    - Compass
+    - CSS3
+    - Grids
+    - Typography
+8. Change your sprite generation process forever
+9. Learn a few amazing tips and tricks
+    - advanced bits.
+
+*/

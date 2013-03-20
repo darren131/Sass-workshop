@@ -1,0 +1,1037 @@
+/*
+__          __        _               _ _   _        _____               
+\ \        / /       | |             (_) | | |      / ____|              
+ \ \  /\  / /__  _ __| | __ __      ___| |_| |__   | (___   __ _ ___ ___ 
+  \ \/  \/ / _ \| '__| |/ / \ \ /\ / / | __| '_ \   \___ \ / _` / __/ __|
+   \  /\  / (_) | |  |   <   \ V  V /| | |_| | | |  ____) | (_| \__ \__ \
+    \/  \/ \___/|_|  |_|\_\   \_/\_/ |_|\__|_| |_| |_____/ \__,_|___/___/
+                                                                         
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+__      __        _       _     _           
+\ \    / /       (_)     | |   | |          
+ \ \  / /_ _ _ __ _  __ _| |__ | | ___  ___ 
+  \ \/ / _` | '__| |/ _` | '_ \| |/ _ \/ __|
+   \  / (_| | |  | | (_| | |_) | |  __/\__ \
+    \/ \__,_|_|  |_|\__,_|_.__/|_|\___||___/
+                                            
+*/
+
+$brand-color: #c00;
+$site-width: 960px;
+$font-stack: "Proxima nova", Arial, sans-serif;
+$text-size: 16px;
+$text-color: #333;
+
+body {
+  color: $text-color;
+  font-family: $font-stack;
+  font-size: $text-size;
+}
+
+#wrapper {
+  max-width: $site-width;
+  border-top: 10px solid $brand-color;
+}
+
+
+//
+// Lists
+//
+$margins: 10px 5px 20px 12px;
+$font-stack: "Proxima nova", Arial, sans-serif;
+$another-example: (top 20px) (left 35px);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+ _____       _                        _       _   _             
+|_   _|     | |                      | |     | | (_)            
+  | |  _ __ | |_ ___ _ __ _ __   ___ | | __ _| |_ _  ___  _ __  
+  | | | '_ \| __/ _ \ '__| '_ \ / _ \| |/ _` | __| |/ _ \| '_ \ 
+ _| |_| | | | ||  __/ |  | |_) | (_) | | (_| | |_| | (_) | | | |
+|_____|_| |_|\__\___|_|  | .__/ \___/|_|\__,_|\__|_|\___/|_| |_|
+                         | |                                    
+                         |_|                                    
+
+Variables can be used for more than just property values. You can use #{} to insert them into property names or selectors.
+*/
+
+$vert: top;
+$horz: left;
+$radius: 10px;
+
+.rounded-#{$vert}-#{$horz} {
+  border-#{$vert}-#{$horz}-radius: $radius;
+  -moz-border-radius-#{$vert}#{$horz}: $radius;
+  -webkit-border-#{$vert}-#{$horz}-radius: $radius;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+  ____                       _   _                 
+ / __ \                     | | (_)                
+| |  | |_ __   ___ _ __ __ _| |_ _  ___  _ __  ___ 
+| |  | | '_ \ / _ \ '__/ _` | __| |/ _ \| '_ \/ __|
+| |__| | |_) |  __/ | | (_| | |_| | (_) | | | \__ \
+ \____/| .__/ \___|_|  \__,_|\__|_|\___/|_| |_|___/
+       | |                                         
+       |_|                                         
+
+*/
+
+//
+// Standard number operations (+ - / * %)
+//
+
+p {
+  width: 1in + 8pt;
+}
+
+// compiles to
+p {
+  width: 1.111in; // note: Sass will automatically convert between units if it can
+}
+
+// division gotchas
+p {
+  font: 10px/8px;             // Plain CSS, no division
+  $width: 1000px;
+  width: $width/2;            // Uses a variable, does division
+  height: (500px/2);          // Uses parentheses, does division
+  margin-left: 5px + 8px/2px; // Uses +, does division
+}
+
+// compiles to
+p {
+  font: 10px/8px;
+  width: 500px;
+  height: 250px;
+  margin-left: 9px;
+}
+
+// use variables along with a plain CSS 
+p {
+  $font-size: 12px;
+  $line-height: 30px;
+  font: #{$font-size}/#{$line-height};
+}
+
+// compiles to
+p {
+  font: 12px/30px;
+}
+
+//
+// String operations
+//
+p {
+  cursor: e + -resize;
+}
+
+// compiles to
+p {
+  cursor: e-resize;
+}
+
+p:before {
+  content: "I ate #{5 + 10} pies!";
+}
+
+// compiles to
+p:before {
+  content: "I ate 15 pies!";
+}
+
+$value: null;
+p:before {
+  content: "I ate #{$value} pies!";
+}
+
+// compiles to
+p:before {
+  content: "I ate  pies!";
+}
+
+//
+// Colour operations (that's just crazy)
+//
+p {
+  color: #010203 + #040506; // seriously—wtf?
+}
+
+// RR GG BB                                 
+// 01 02 03                                  
+// 04 05 06
+// --------
+// 05 07 09
+
+// compiles to:
+p {
+  color: #050709;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+ ______                _   _                 
+|  ____|              | | (_)                
+| |__ _   _ _ __   ___| |_ _  ___  _ __  ___ 
+|  __| | | | '_ \ / __| __| |/ _ \| '_ \/ __|
+| |  | |_| | | | | (__| |_| | (_) | | | \__ \
+|_|   \__,_|_| |_|\___|\__|_|\___/|_| |_|___/
+                                             
+*/
+
+//
+// Color functions 
+//
+$bold-color: saturate($main-color, 25%);
+$accent-color: adjust-hue($bold-color, 60deg); // same as complement($color)
+$main-gray-color: grayscale($main-color);
+$highlight-color: lighten($main-color, 20%);
+$shadow-color: darken($main-color, 20%);
+$invert-color: invert($main-color);
+$complement-color: complement($main-color);
+$combined-color: mix(#000,#fff);
+
+
+//
+// Opacity functions
+//
+$rgba-example: rgba(#cc0000, 0.4);
+$alpha-value: alpha(rgba(51, 255, 51, 0.75)); // 0.75
+$opacity-value: opacity(rgba(51, 255, 51, 0.75)); // 0.75
+$increase-opacity: opacify(rgba(51, 255, 51, 0.75), 0.1); // rgba(51, 255, 51, 0.85)
+$fadein-opacity: fade-in(rgba(51, 255, 51, 0.75), 0.1); // rgba(51, 255, 51, 0.85)
+$increase-color: transparentize(rgba(51, 255, 51, 0.75), 0.1); // rgba(51, 255, 51, 0.65)
+$fade-out-color: fade-out(rgba(51, 255, 51, 0.75), 0.1); // rgba(51, 255, 51, 0.65)
+
+//
+// Number functions
+//
+// • round($value)
+//   Rounds a number to the nearest whole number.
+// • ceil($value)
+//   Rounds a number up to the nearest whole number.
+// • floor($value)
+//   Rounds a number down to the nearest whole number.
+// • abs($value)
+//   Returns the absolute value of a number.
+// • min($x1, $x2, …)
+//   Finds the minimum of several values.
+// • max($x1, $x2, …)
+//   Finds the maximum of several values.
+
+$side-bar: percentage(180px/940px); //target ÷ context
+
+
+//
+// List functions
+//
+$font-stack: "Proxima nova", Arial, sans-serif;
+length($font-stack) // 3
+nth($font-stack, 2) // Arial
+
+$margins: 10px 5px 20px 12px;
+length($margins) // 4
+nth($font-stack, 3) // 20px
+
+join(10px 20px, 30px 40px) // 10px 20px 30px 40px
+join((blue, red), (#abc, #def)) // blue, red, #abc, #def
+join(10px, 20px) // 10px 20px
+join(10px, 20px, comma) // 10px, 20px
+join((blue, red), (#abc, #def), space) // blue red #abc #def
+
+append(10px 20px, 30px) // 10px 20px 30px
+append((blue, red), green) // blue, red, green
+append(10px 20px, 30px 40px) // 10px 20px (30px 40px)
+append(10px, 20px, comma) // 10px, 20px
+append((blue, red), green, space) // blue red green
+
+
+// Practical use
+$gradient: #000, #fff;
+
+button {
+  background: mix( nth($gradient,1), nth($gradient,2) );
+  background: -moz-linear-gradient(top,  nth($gradient,1) 0%, nth($gradient,2) 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,nth($gradient,1)), color-stop(100%,nth($gradient,2)));
+  background: -webkit-linear-gradient(top,  nth($gradient,1) 0%,nth($gradient,2) 100%);
+  background: -o-linear-gradient(top,  nth($gradient,1) 0%,nth($gradient,2) 100%);
+  background: -ms-linear-gradient(top,  nth($gradient,1) 0%,nth($gradient,2) 100%);
+  background: linear-gradient(to bottom,  nth($gradient,1) 0%,nth($gradient,2) 100%);
+}
+
+// compiles to
+button {
+  background: #7f7f7f;
+  background: -moz-linear-gradient(top, #000000 0%, #ffffff 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #000000), color-stop(100%, #ffffff));
+  background: -webkit-linear-gradient(top, #000000 0%, #ffffff 100%);
+  background: -o-linear-gradient(top, #000000 0%, #ffffff 100%);
+  background: -ms-linear-gradient(top, #000000 0%, #ffffff 100%);
+  background: linear-gradient(to bottom, #000000 0%, #ffffff 100%);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+ _   _           _   _             
+| \ | |         | | (_)            
+|  \| | ___  ___| |_ _ _ __   __ _ 
+| . ` |/ _ \/ __| __| | '_ \ / _` |
+| |\  |  __/\__ \ |_| | | | | (_| |
+|_| \_|\___||___/\__|_|_| |_|\__, |
+                              __/ |
+                             |___/ 
+*/
+//
+// Selector nesting
+//
+
+#main p {
+  color: #00ff00;
+  width: 97%;
+
+  .redbox {
+    background-color: #ff0000;
+    color: #000000;
+  }
+}
+
+// Compiles to
+#main p {
+  color: #00ff00;
+  width: 97%;
+}
+#main p .redbox {
+  background-color: #ff0000;
+  color: #000000;
+}
+
+
+#main {
+  width: 97%;
+
+  p, div {
+    font-size: 2em;
+    a { font-weight: bold; }
+  }
+
+  pre { font-size: 3em; }
+}
+
+// compiles to
+#main {
+  width: 97%;
+}
+#main p, #main div {
+  font-size: 2em;
+}
+#main p a, #main div a {
+  font-weight: bold;
+}
+#main pre {
+  font-size: 3em;
+}
+
+//
+// Reference the parent selector
+// AKA—the mighty &
+//
+a {
+  font-weight: bold;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  body.ie-old & {
+    font-weight: normal;
+  }
+}
+
+// Compiles to
+a {
+  font-weight: bold;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+body.ie-old a {
+  font-weight: normal;
+}
+
+
+#main {
+  color: black;
+  a {
+    font-weight: bold;
+    
+    &:hover {
+      color: red;
+    }
+  }
+}
+
+// Compiles to
+#main {
+  color: black;
+}
+#main a {
+  font-weight: bold;
+}
+#main a:hover {
+  color: red;
+}
+
+//
+// Nested properties
+//
+.funky {
+  font: {
+    family: fantasy;
+    size: 30em;
+    weight: bold;
+  }
+}
+
+// Compiles to
+.funky {
+  font-family: fantasy;
+  font-size: 30em;
+  font-weight: bold;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+ __  __ _      _           
+|  \/  (_)    (_)          
+| \  / |___  ___ _ __  ___ 
+| |\/| | \ \/ / | '_ \/ __|
+| |  | | |>  <| | | | \__ \
+|_|  |_|_/_/\_\_|_| |_|___/
+                           
+*/
+//
+// Basic mixin
+//
+@mixin large-text {
+  font: {
+    family: Arial;
+    size: 20px;
+    weight: bold;
+  }
+  color: #ff0000;
+}
+
+//
+// Containing selectors
+//
+@mixin clearfix {
+  display: inline-block;
+  &:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+  }
+  * html & { height: 1px }
+}
+
+//
+// Including a mixin
+//
+.page-title {
+  @include large-text;
+  padding: 4px;
+  margin-top: 10px;
+}
+
+// Compiles to
+.page-title {
+  font-family: Arial;
+  font-size: 20px;
+  font-weight: bold;
+  color: #ff0000;
+  padding: 4px;
+  margin-top: 10px;
+}
+
+.module {
+  @include clearfix;
+  border: 1px solid #c00;
+  padding: 20px;
+}
+
+// Compiles to
+.module {
+  display: inline-block;
+  border: 1px solid #c00;
+  padding: 20px;
+}
+.module:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+* html .module {
+  height: 1px;
+}
+
+//
+// With arguments
+//
+@mixin sexy-border($width, $color, $style) {
+  border: $width $color $style;
+}
+
+p {
+  @include sexy-border(1px, #cc0000, dashed);
+}
+
+// Compiles to
+p {
+  border: 1px #cc0000 dashed;
+}
+
+//
+// Default values
+//
+@mixin sexy-border($width, $color, $style: solid) {
+  border: $width $color $style;
+}
+
+p {
+  @include sexy-border(#c00, 1px);
+}
+h1 {
+  @include sexy-border(#c00, 2px, dotted);
+}
+
+// Compiles to
+p {
+  border: #cc0000 1px solid;
+}
+
+h1 {
+  border: #cc0000 2px dotted;
+}
+
+//
+// Variable arguments
+//
+@mixin box-shadow($shadows...) {
+  -moz-box-shadow: $shadows;
+  -webkit-box-shadow: $shadows;
+  box-shadow: $shadows;
+}
+.shadows {
+  @include box-shadow(0px 4px 5px #666, 2px 6px 10px #999, inset 1px 1px 0 white);
+}
+
+// Compiles to
+.shadows {
+  -moz-box-shadow: 0px 4px 5px #666666, 2px 6px 10px #999999, inset 1px 1px 0 white;
+  -webkit-box-shadow: 0px 4px 5px #666666, 2px 6px 10px #999999, inset 1px 1px 0 white;
+  box-shadow: 0px 4px 5px #666666, 2px 6px 10px #999999, inset 1px 1px 0 white;
+}
+
+// OR the other way around
+@mixin colors($text, $background, $border) {
+  color: $text;
+  background-color: $background;
+  border-color: $border;
+}
+
+$values: #ff0000, #00ff00, #0000ff;
+.primary {
+  @include colors($values...);
+}
+
+// Compiles to
+.primary {
+  color: #ff0000;
+  background-color: #00ff00;
+  border-color: #0000ff;
+}
+
+
+//
+// Passing content blocks
+//
+@mixin apply-to-ie6-only {
+  * html {
+    @content;
+  }
+}
+@include apply-to-ie6-only {
+  #logo {
+    background-image: url(/logo.gif);
+  }
+}
+
+// Compiles to
+* html #logo {
+  background-image: url(/logo.gif);
+}
+
+//
+// Conditions
+//
+
+// http://css-tricks.com/snippets/css/css-triangle/
+@mixin arrow($direction, $color, $size) {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  @if $direction == up {
+    border-left: $size solid transparent;
+    border-right: $size solid transparent;
+    border-bottom: $size solid $color;
+  } @else if $direction == down {
+    border-left: $size solid transparent;
+    border-right: $size solid transparent;
+    border-top: $size solid $color;    
+  } @else if $direction == right {
+    border-top: $size solid transparent;
+    border-bottom: $size solid transparent;
+    border-left: $size solid $color;    
+  } @else if $direction == left {
+    border-top: $size solid transparent;
+    border-bottom: $size solid transparent;
+    border-right: $size solid $color;    
+  } @else {
+    @warn "No direction given. We'll assume up.";
+    border-left: $size solid transparent;
+    border-right: $size solid transparent;
+    border-bottom: $size solid $color;
+  }
+}
+
+.arrow-down {
+    @include arrow(down, #c00, 10px);
+}
+
+// Compiles to
+.arrow-down {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid #cc0000;
+}
+
+//
+// For loop
+//
+@mixin headers($base_font_size: 24px, $number_of_headings: 4) {
+
+  @for $i from 1 through $number_of_headings {
+    h#{$i} {
+      font-size: $base_font_size - $i*2;
+    }
+  }
+}
+
+@include headers();
+
+// Compiles to
+h1 {
+  font-size: 22px;
+}
+
+h2 {
+  font-size: 20px;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+
+//
+// Each loop
+//
+@mixin icon-list($the_list) {
+
+  @each $item in $the_list {
+    .#{$item}-icon {
+      background-image: url('/images/#{$item}.png');
+    }
+  }
+}
+
+$animal_list: puma, sea-slug, egret, salamander;
+@include icon-list($animal_list);
+
+// Compiles to
+.puma-icon {
+  background-image: url("/images/puma.png");
+}
+
+.sea-slug-icon {
+  background-image: url("/images/sea-slug.png");
+}
+
+.egret-icon {
+  background-image: url("/images/egret.png");
+}
+
+.salamander-icon {
+  background-image: url("/images/salamander.png");
+}
