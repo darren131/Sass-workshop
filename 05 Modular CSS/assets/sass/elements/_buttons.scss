@@ -1,0 +1,24 @@
+// default config
+$default-gradient: #000, #fff;
+$confirm-gradient: #0c0 #070;
+$error-gradient: #c00 #c00;
+
+// include the extends
+@import "buttons/extends";
+
+// write your CSS
+button, .button, input[type='button'] {
+  @extend %button;
+}
+
+.registration {
+  button {
+    @extend %button--confirm;
+  }
+}
+
+.cancel {
+  button {
+    @extend %button-cancel;
+  }
+}
