@@ -2,10 +2,10 @@
 @import "compass";
 
 // import your images
-@import "icons/*.png";
+@import "icon/*.png";
 
 // automagically generate class names
-@include all-icons-sprites;
+@include all-icon-sprites;
 
 .external-links {
   a {
@@ -13,3 +13,74 @@
     display: block;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+//
+// configuration variables
+//
+
+// Sprite sheet layout
+$icon-layout: horizontal;
+
+//$icon-layout: vertical;
+//$icon-layout: diagonal;
+//$icon-layout: smart;
+
+
+// Sprite sheet spacing
+// NOTE: doesn't work with smart
+$icon-spacing: 10px;
+
+// Include dimensions in css
+$icon-sprite-dimensions: true;
+*/
