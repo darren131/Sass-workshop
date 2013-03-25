@@ -21,8 +21,6 @@
 // CSS 3
 //
 // http://compass-style.org/reference/compass/css3/
-@import "compass/css3";
-
 .box {
   @include border-radius(10px 0 10px 0);
   @include background-image(linear-gradient(#ffffff, #aaaaaa));
@@ -71,7 +69,6 @@ $gutter-width   : 1em;
 //
 // http://compass-style.org/reference/compass/typography/
 
-@import "compass/typography";
 // link-colors($normal, $hover, $active, $visited, $focus)
 a {
   @include link-colors(#00c, #0c0, #c00, #c0c, #0c0);
@@ -90,7 +87,8 @@ a {
   font-weight: bold;
   color: #cc0;
 }
-// outputs
+
+// Compiles to
 h1, h2, h3, h4, h5, h6 {
   font-weight: bold;
   color: #cc0;
@@ -113,6 +111,12 @@ h1, h2, h3, h4, h5, h6 {
   display: block;
 }
 
+// compiles to
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+  display: block;
+}
+
+
 // Image helpers
 .icon-facebook--large {
   background: image-url("icon-facebook.png");
@@ -120,7 +124,7 @@ h1, h2, h3, h4, h5, h6 {
   height: image-height("icon-facebook.png");
 }
 
-// output 
+// compiles to 
 .icon-facebook--large {
   background: url("/assets/images/icon-facebook.png");
   width: 60px;

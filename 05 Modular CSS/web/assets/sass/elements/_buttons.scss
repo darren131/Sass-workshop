@@ -11,12 +11,24 @@ button, .button, input[type='button'] {
   @extend %button;
 }
 
+// Module
+.button--confirm {
+  @extend %button--confirm;
+}
+
+// Potential layout
 .registration {
   button {
     @extend %button--confirm;
   }
 }
 
+// Module
+.button--cancel {
+  @extend %button--cancel;  
+}
+
+// Potential layout
 .cancel {
   button {
     @extend %button--cancel;

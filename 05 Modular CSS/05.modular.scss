@@ -10,7 +10,7 @@
 
 Object oriented CSS.
 Extract all the things.
-Reusable modules that can be extended to apply skins or other one off features.
+Reusable modules that can be extended to apply skins or other one off visual tweaks.
 More maintainable CSS
 */
 
@@ -266,6 +266,24 @@ $red: #c00;
   @extend .error;
 }
 
+// compiles to
+.error--fatal {
+  padding-right: 30px !important;
+}
+
+.error--fatal {
+  padding-left: 30px !important;
+}
+
+.error, .error--fatal {
+  color: #cc0000;
+  font-weight: bold;
+  border: 1px solid #cc0000;
+}
+
+
+
+
 //
 // another example
 //
@@ -297,10 +315,13 @@ $clearfix-method: overflow !default; // can be one of: overflow,micro
 //
 // Usage
 //
-.module-header {
+[role=banner] {
     @include clearfix;
 }
-.module-footer {
+[role=main] {
+    @include clearfix;
+}
+[role=contentinfo] {
     @include clearfix;
 }
 .media {
@@ -309,3 +330,91 @@ $clearfix-method: overflow !default; // can be one of: overflow,micro
 .video {
     @include clearfix(micro);
 }
+
+// compiles to
+[role=banner], [role=main], [role=contentinfo] {
+  overflow: hidden;
+  *overflow: visible;
+  zoom: 1;
+}
+
+.media, .video {
+  zoom: 1;
+}
+.media:before, .video:before, .media:after, .video:after {
+  content: " ";
+  display: table;
+}
+.media:after, .video:after {
+  clear: both;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+ ______                           _      
+|  ____|                         | |     
+| |__  __  ____ _ _ __ ___  _ __ | | ___ 
+|  __| \ \/ / _` | '_ ` _ \| '_ \| |/ _ \
+| |____ >  < (_| | | | | | | |_) | |  __/
+|______/_/\_\__,_|_| |_| |_| .__/|_|\___|
+                           | |           
+                           |_|           
+*/
