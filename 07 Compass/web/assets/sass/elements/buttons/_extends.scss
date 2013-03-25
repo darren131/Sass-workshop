@@ -1,0 +1,13 @@
+@import "buttons/mixins";
+
+%button {
+  @include button;
+}
+
+%button--confirm {
+  @include button($confirm-gradient);
+}
+
+%button--error {
+  @include button($error-gradient);
+}

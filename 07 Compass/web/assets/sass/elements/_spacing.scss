@@ -1,0 +1,6 @@
+// Default config
+$small-spacing: 10px;
+$medium-spacing: 20px;
+$large-spacing: 40px;
+
+@include "spacing/extends";

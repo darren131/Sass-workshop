@@ -89,3 +89,46 @@
   }
 
 }
+
+
+
+
+
+
+
+
+//
+// Responsive units
+//
+$site-width: 1000px;
+
+#main-column {
+  width: percentage(650px/$site-width);
+}
+
+#sub-column {
+  width: percentage(250px/$site-width);
+}
+
+
+
+
+
+
+
+//
+// Roll your own ems
+//
+$font-size: 16px;
+@function em($target, $context: $font_size) {
+  @return ($target / $context) * 1em;
+}
+
+// to use
+p {
+  font-size: em(12px);
+}
+
+h1 {
+    font-size: em(24px, 10px);
+}
