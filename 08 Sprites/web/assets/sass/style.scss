@@ -1,0 +1,15 @@
+// import Compass
+@import "compass";
+
+// import your images
+@import "icons/*.png";
+
+// automagically generate class names
+@include all-icons-sprites;
+
+.external-links {
+  a {
+    @include hide-text;
+    display: block;
+  }
+}

@@ -1,0 +1,18 @@
+// widths
+$site-width: 1000px;
+$sub-column: percentage(250px/$site-width);
+$main-column: percentage(650px/$site-width);
+
+// colours
+$header-gradient: #186192 #073b69;
+$body-gradient: #e1f2fe #ffffff;
+$footer-bg: #ecf7fd;
+$highlight: #9fce30;
+$font-color: #444444;
+$header-color: #003d5d;
+
+// typography
+$fonts: helvetica, arial, sans-serif;
+$font-size: 16px;
+$line-height: 1.4;
+
