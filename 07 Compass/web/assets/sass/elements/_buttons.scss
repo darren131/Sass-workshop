@@ -19,6 +19,6 @@ button, .button, input[type='button'] {
 
 .cancel {
   button {
-    @extend %button-cancel;
+    @extend %button--cancel;
   }
 }

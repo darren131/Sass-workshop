@@ -1,15 +1,138 @@
-// Global things
-@import "global/variables";
-@import "global/mixins";
-@import "global/extends";
-@import "global/normalize";
+//
+// Import all of compass
+//
+@import "compass";
 
-// Elements
-@import "elements/spacing";
-@import "elements/buttons";
+// Import a part of compass
+@import "compass/layout";
+@import "compass/utilities";
 
-// Layout styles
-@import "layout/header";
-@import "layout/sidebar";
-@import "layout/main";
-@import "layout/footer";
+// More granular 
+@import "compass/utilities/general";
+
+
+
+
+
+
+
+
+//
+// CSS 3
+//
+// http://compass-style.org/reference/compass/css3/
+@import "compass/css3";
+
+.box {
+  @include border-radius(10px 0 10px 0);
+  @include background-image(linear-gradient(#ffffff, #aaaaaa));
+  @include box-shadow(1px 1px 3px rgba(#000,0.3));
+  width: 320px;
+  height: 40px;
+  line-height: 40px;
+}
+
+
+
+
+
+
+
+
+//
+// Grids
+//
+// http://susy.oddbird.net/
+@import "susy";
+
+$total-columns  : 6;
+$gutter-width   : 1em;
+
+.wrapper {
+  @include container;
+}
+
+.content-sub {
+  @include span-columns(2);
+}
+
+.content-main {
+  @include span-columns(4);
+}
+
+
+
+
+
+
+
+//
+// Typography
+//
+// http://compass-style.org/reference/compass/typography/
+
+@import "compass/typography";
+// link-colors($normal, $hover, $active, $visited, $focus)
+a {
+  @include link-colors(#00c, #0c0, #c00, #c0c, #0c0);
+}
+
+// Fontface
+@include font-face("Blooming Grove", font-files("bgrove.ttf", "bgrove.otf"));
+ 
+.example {
+  font-family: "Blooming Grove";
+  font-size: 1.5em;
+}
+
+// headings();
+#{headings()} {
+  font-weight: bold;
+  color: #cc0;
+}
+// outputs
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bold;
+  color: #cc0;
+}
+
+
+
+
+
+
+
+
+//
+// Helpers
+//
+// http://compass-style.org/reference/compass/helpers/
+
+// elements-of-type()
+#{elements-of-type(html5-block)} {
+  display: block;
+}
+
+// Image helpers
+.icon-facebook--large {
+  background: image-url("icon-facebook.png");
+  width: image-width("icon-facebook.png");
+  height: image-height("icon-facebook.png");
+}
+
+// output 
+.icon-facebook--large {
+  background: url("/assets/images/icon-facebook.png");
+  width: 60px;
+  height: 60px;
+}
+
+// Inline base64 images
+.icon-facebook--large {
+  background: inline-image("icon-facebook.png");
+}
+
+// outputs
+.icon-facebook--large {
+  background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAzZJREFUeNrs29tP01AYAPCvp+3WdWMb46Zi4iWoiRGMATVhwcsDoj6ZKIovRnkAE0h8NsYH9S8wBoNPPPiIJvokSoyJbyiGKMQEr0/IVdi6jW3tunk+EhPQwWaQtWvPlzTZ5evll56e85115YIXeyFbuF2OFq/H2a1qelN0UfUm1RQHJg7JKUCZX9bdsmNoYkq5HYurz7PlCX99wJP9FQF3/+RsZBddCYolEskUTEwrPH3ZSJeBzRUlnxeU+AX6+cjyPLL8jc8jXeYIN4JYKPJAg57OvENTVrCvROpQYok+TdM5sEigBU3U1rkCTNt//WJcfZDJgOUCTdTWi8bfYM7rkZ5oqTRYNdCGRrQS2hufmvkZ3QoWDzSildChpwtsEvRa7iZ0nA3aBayn00dJJJb02gUcjiRkQTXpMMTRo6qu8kF1pRdkl7hm7sevMzA9F82rOBHMBqXlIbSdroPmYA2Ul7rzWudWz0sYnPuSV65gpjN6rqUWOs4fBJckbth+TAEWBQLXO4/BieDGV7TEDGe2UFhTgLEZFwprOJhO4eBq26GC7tNQ8JWz9eB0CPYAl3pd0NxY+Gm3YeCmhu1LvXOhw7BhqWFfdV558+E4jH6agnR69cl6PlWW4eBtW/w5cxDSfuMx1sDF36QDtITMFY9ejP1XrKFgOjfNmTO3ELNOp0U4YyZphldaDFysw1Ldnk3QerJ2XdtopXX2kYYdOfP6B0bhw/iUseCqcg8cP7xzXdvYW1O5tOSK18PfAcZZk2ZgBmZgBmZgBrZtpYWVz827g6t+f+dacx4V1BjdzmTOPLzVYjgYJ+//8ktEdsg0vBr6xpo0AzMwAzMwAzMwAzMwA5sSLEuibhcsWolbdoTsAkYrEXjyxjZzYWolSjR5zy5gtJJYXB2oLPNMWB1LjT/Qir10Rokmzhjxf4tCBdrQiNYlZSKZGqYXdDfHWQ+LJskpdlHj2xXjcEhJ9JS4ne2iyFvmUQ+0iAJ/KRJL3s9aeNCLuo8nXD0+5FTs2IBfHtM0/YCq6Q/XrLTwSa7J2chufCCCwp+V+eWwowjOOh5jwOcK0+N9yvOkZT60iDen3/+Z90uAAQCECRU0E8IvHQAAAABJRU5ErkJggg==');
+}
