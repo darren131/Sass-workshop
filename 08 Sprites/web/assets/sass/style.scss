@@ -1,86 +1,8 @@
 // import Compass
 @import "compass";
 
-// import your images
+$icon-sprite-base-class: ".sprite-";
 @import "icon/*.png";
 
 // automagically generate class names
 @include all-icon-sprites;
-
-.external-links {
-  a {
-    @include hide-text;
-    display: block;
-  }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-//
-// configuration variables
-//
-
-// Sprite sheet layout
-$icon-layout: horizontal;
-
-//$icon-layout: vertical;
-//$icon-layout: diagonal;
-//$icon-layout: smart;
-
-
-// Sprite sheet spacing
-// NOTE: doesn't work with smart
-$icon-spacing: 10px;
-
-// Include dimensions in css
-$icon-sprite-dimensions: true;
-*/
