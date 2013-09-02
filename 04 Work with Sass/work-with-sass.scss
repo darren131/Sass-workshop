@@ -1,0 +1,908 @@
+/*
+__          __        _               _ _   _        _____               
+\ \        / /       | |             (_) | | |      / ____|              
+ \ \  /\  / /__  _ __| | __ __      ___| |_| |__   | (___   __ _ ___ ___ 
+  \ \/  \/ / _ \| '__| |/ / \ \ /\ / / | __| '_ \   \___ \ / _` / __/ __|
+   \  /\  / (_) | |  |   <   \ V  V /| | |_| | | |  ____) | (_| \__ \__ \
+    \/  \/ \___/|_|  |_|\_\   \_/\_/ |_|\__|_| |_| |_____/ \__,_|___/___/
+                                                                         
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+  _____                                     _       
+ / ____|                                   | |      
+| |     ___  _ __ ___  _ __ ___   ___ _ __ | |_ ___ 
+| |    / _ \| '_ ` _ \| '_ ` _ \ / _ \ '_ \| __/ __|
+| |___| (_) | | | | | | | | | | |  __/ | | | |_\__ \
+ \_____\___/|_| |_| |_|_| |_| |_|\___|_| |_|\__|___/
+                                                                                                
+*/
+
+/* This comment is
+ * several lines long.
+ * since it uses the CSS comment syntax,
+ * it will appear in the CSS output. */
+
+
+// These comments are only one line long each.
+// They won't appear in the CSS output,
+// since they use the single-line comment syntax.
+
+
+
+/*! When the first letter of a comment is !, the comment will be interpolated and always 
+    rendered into css output even in compressed output modes. This is useful for adding 
+    Copyright notices to your generated CSS.
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+ _   _           _   _             
+| \ | |         | | (_)            
+|  \| | ___  ___| |_ _ _ __   __ _ 
+| . ` |/ _ \/ __| __| | '_ \ / _` |
+| |\  |  __/\__ \ |_| | | | | (_| |
+|_| \_|\___||___/\__|_|_| |_|\__, |
+                              __/ |
+                             |___/ 
+*/
+//
+// Selector nesting
+//
+
+#main p {
+  color: #00ff00;
+  width: 97%;
+
+  .redbox {
+    background-color: #ff0000;
+    color: #000000;
+  }
+}
+
+// Compiles to
+#main p {
+  color: #00ff00;
+  width: 97%;
+}
+#main p .redbox {
+  background-color: #ff0000;
+  color: #000000;
+}
+
+
+#main {
+  width: 97%;
+
+  p, div {
+    font-size: 2em;
+
+    a { 
+      font-weight: bold; 
+    }
+  }
+
+  pre { font-size: 3em; }
+}
+
+// compiles to
+#main {
+  width: 97%;
+}
+#main p, #main div {
+  font-size: 2em;
+}
+#main p a, #main div a {
+  font-weight: bold;
+}
+#main pre {
+  font-size: 3em;
+}
+
+//
+// Reference the parent selector
+// AKA—the mighty AMPERSAND (&)
+//
+a {
+  font-weight: bold;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  body.ie-old & {
+    font-weight: normal;
+  }
+}
+
+// Compiles to
+a {
+  font-weight: bold;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+body.ie-old a {
+  font-weight: normal;
+}
+
+
+#main {
+  color: black;
+  a {
+    font-weight: bold;
+    
+    &:hover {
+      color: red;
+    }
+  }
+}
+
+// Compiles to
+#main {
+  color: black;
+}
+#main a {
+  font-weight: bold;
+}
+#main a:hover {
+  color: red;
+}
+
+//
+// Nested properties
+//
+.funky {
+  font: {
+    family: fantasy;
+    size: 30em;
+    weight: bold;
+  }
+}
+
+// Compiles to
+.funky {
+  font-family: fantasy;
+  font-size: 30em;
+  font-weight: bold;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+__      __        _       _     _           
+\ \    / /       (_)     | |   | |          
+ \ \  / /_ _ _ __ _  __ _| |__ | | ___  ___ 
+  \ \/ / _` | '__| |/ _` | '_ \| |/ _ \/ __|
+   \  / (_| | |  | | (_| | |_) | |  __/\__ \
+    \/ \__,_|_|  |_|\__,_|_.__/|_|\___||___/
+                                            
+*/
+
+$brand-color: #c00;
+$site-width: 960px;
+$font-stack: "Proxima nova", Arial, sans-serif;
+$text-size: 16px;
+$text-color: #333;
+
+body {
+  color: $text-color;
+  font-family: $font-stack;
+  font-size: $text-size;
+}
+
+#wrapper {
+  max-width: $site-width;
+  border-top: 10px solid $brand-color;
+}
+
+
+//
+// Lists
+//
+$margins: 10px 5px 20px 12px;
+$font-stack: "Proxima nova", Arial, sans-serif;
+$another-example: (top 20px) (left 35px);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+ _____       _                        _       _   _             
+|_   _|     | |                      | |     | | (_)            
+  | |  _ __ | |_ ___ _ __ _ __   ___ | | __ _| |_ _  ___  _ __  
+  | | | '_ \| __/ _ \ '__| '_ \ / _ \| |/ _` | __| |/ _ \| '_ \ 
+ _| |_| | | | ||  __/ |  | |_) | (_) | | (_| | |_| | (_) | | | |
+|_____|_| |_|\__\___|_|  | .__/ \___/|_|\__,_|\__|_|\___/|_| |_|
+                         | |                                    
+                         |_|                                    
+
+Variables can be used for more than just property values. You can use #{} to insert them into property names or selectors.
+*/
+
+$vert: top;
+$horz: left;
+$radius: 10px;
+
+.rounded-#{$vert}-#{$horz} {
+  border-#{$vert}-#{$horz}-radius: $radius;
+  -moz-border-radius-#{$vert}#{$horz}: $radius;
+  -webkit-border-#{$vert}-#{$horz}-radius: $radius;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+                   _                 _                   _ 
+   ____           | |               | |                 | |
+  / __ \  _____  _| |_ ___ _ __   __| |   __ _ _ __   __| |
+ / / _` |/ _ \ \/ / __/ _ \ '_ \ / _` |  / _` | '_ \ / _` |
+| | (_| |  __/>  <| ||  __/ | | | (_| | | (_| | | | | (_| |
+ \ \__,_|\___/_/\_\\__\___|_| |_|\__,_|  \__,_|_| |_|\__,_|
+  \____/                                                   
+                                                           
+
+ _____  _                _           _     _               
+|  __ \| |              | |         | |   | |              
+| |__) | | __ _  ___ ___| |__   ___ | | __| | ___ _ __ ___ 
+|  ___/| |/ _` |/ __/ _ \ '_ \ / _ \| |/ _` |/ _ \ '__/ __|
+| |    | | (_| | (_|  __/ | | | (_) | | (_| |  __/ |  \__ \
+|_|    |_|\__,_|\___\___|_| |_|\___/|_|\__,_|\___|_|  |___/
+                                                           
+*/
+
+/*
+Consider this HTML
+
+<div class="error seriousError">
+  Oh no! You've been hacked!
+</div>
+
+*/
+.error {
+  border: 1px #f00;
+  background-color: #fdd;
+}
+.seriousError {
+  border-width: 3px;
+}
+
+//
+// Use @extend
+//
+/*
+Consider this HTML
+
+<div class="error--serious">
+  Oh no! You've been hacked!
+</div>
+*/
+.error {
+  border: 1px #f00;
+  background-color: #fdd;
+}
+.error--serious {
+  @extend .error;
+  border-width: 3px;
+}
+
+// compiles to
+.error, .error--serious {
+  border: 1px #f00;
+  background-color: #fdd;
+}
+
+.error--serious {
+  border-width: 3px;
+}
+
+
+//
+// @extend all selectors
+//
+a:hover {
+  text-decoration: underline;
+}
+.hoverlink {
+  @extend a:hover;
+}
+
+// Compiles to
+a:hover, .hoverlink {
+  text-decoration: underline;
+}
+
+//
+// Multiple @extends
+//
+.error {
+  border: 1px #f00;
+  background-color: #fdd;
+}
+.attention {
+  font-size: 3em;
+  background-color: #ff0;
+}
+.error--attention {
+  @extend .error;
+  @extend .attention;
+  border-width: 3px;
+}
+
+// Compiles to
+.error, .error--attention {
+  border: 1px #f00;
+  background-color: #fdd; }
+
+.attention, .error--attention {
+  font-size: 3em;
+  background-color: #ff0; }
+
+.error--attention {
+  border-width: 3px; }
+
+//
+// @extend only selectors (AKA Placeholder selectors)
+//
+%clearfix {
+    *zoom: 1;
+    &:before, &:after {
+      content: " ";
+      display: table;
+    }
+  &:after {
+    clear: both;
+  }
+}
+
+.module {
+  @extend %clearfix;
+  border: 1px solid red;
+}
+
+#sidebar {
+  @extend %clearfix;
+  border-right: 1px solid #ccc;
+  float: left;
+  width: 30%;
+}
+
+#content {
+  @extend %clearfix;
+  float: right;
+  width: 65%;
+}
+
+// Compiles to
+.module, #sidebar, #content {
+  *zoom: 1;
+}
+.module:before, #sidebar:before, #content:before, .module:after, #sidebar:after, #content:after {
+  content: " ";
+  display: table;
+}
+.module:after, #sidebar:after, #content:after {
+  clear: both;
+}
+
+.module {
+  border: 1px solid red;
+}
+
+#sidebar {
+  border-right: 1px solid #ccc;
+  float: left;
+  width: 30%;
+}
+
+#content {
+  float: right;
+  width: 65%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+ __  __ _      _           
+|  \/  (_)    (_)          
+| \  / |___  ___ _ __  ___ 
+| |\/| | \ \/ / | '_ \/ __|
+| |  | | |>  <| | | | \__ \
+|_|  |_|_/_/\_\_|_| |_|___/
+                           
+*/
+//
+// Basic mixin
+//
+@mixin large-text {
+  font: {
+    family: Arial;
+    size: 20px;
+    weight: bold;
+  }
+  color: #ff0000;
+}
+
+//
+// Containing selectors
+//
+@mixin clearfix {
+  display: inline-block;
+  &:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+  }
+  * html & { height: 1px }
+}
+
+//
+// Including a mixin
+//
+.page-title {
+  @include large-text;
+  padding: 4px;
+  margin-top: 10px;
+}
+
+// Compiles to
+.page-title {
+  font-family: Arial;
+  font-size: 20px;
+  font-weight: bold;
+  color: #ff0000;
+  padding: 4px;
+  margin-top: 10px;
+}
+
+.module {
+  @include clearfix;
+  border: 1px solid #c00;
+  padding: 20px;
+}
+
+// Compiles to
+.module {
+  display: inline-block;
+  border: 1px solid #c00;
+  padding: 20px;
+}
+.module:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+* html .module {
+  height: 1px;
+}
+
+//
+// With arguments
+//
+@mixin sexy-border($width, $color, $style) {
+  border: $width $color $style;
+}
+
+p {
+  @include sexy-border(1px, #cc0000, dashed);
+}
+
+// Compiles to
+p {
+  border: 1px #cc0000 dashed;
+}
+
+//
+// Default values
+//
+@mixin sexy-border($width, $color, $style: solid) {
+  border: $width $color $style;
+}
+
+p {
+  @include sexy-border(#c00, 1px);
+}
+h1 {
+  @include sexy-border(#c00, 2px, dotted);
+}
+
+// Compiles to
+p {
+  border: #cc0000 1px solid;
+}
+
+h1 {
+  border: #cc0000 2px dotted;
+}
+
+//
+// Variable arguments
+//
+@mixin box-shadow($shadows...) {
+  -moz-box-shadow: $shadows;
+  -webkit-box-shadow: $shadows;
+  box-shadow: $shadows;
+}
+.shadows {
+  @include box-shadow(0px 4px 5px #666, 2px 6px 10px #999, inset 1px 1px 0 white);
+}
+
+// Compiles to
+.shadows {
+  -moz-box-shadow: 0px 4px 5px #666666, 2px 6px 10px #999999, inset 1px 1px 0 white;
+  -webkit-box-shadow: 0px 4px 5px #666666, 2px 6px 10px #999999, inset 1px 1px 0 white;
+  box-shadow: 0px 4px 5px #666666, 2px 6px 10px #999999, inset 1px 1px 0 white;
+}
+
+// OR the other way around
+@mixin colors($text, $background, $border) {
+  color: $text;
+  background-color: $background;
+  border-color: $border;
+}
+
+$values: #ff0000, #00ff00, #0000ff;
+.primary {
+  @include colors($values...);
+}
+
+// Compiles to
+.primary {
+  color: #ff0000;
+  background-color: #00ff00;
+  border-color: #0000ff;
+}
+
+
+//
+// Passing content blocks
+//
+@mixin apply-to-ie6-only {
+  * html {
+    @content;
+  }
+}
+@include apply-to-ie6-only {
+  #logo {
+    background-image: url(/logo.gif);
+  }
+}
+
+// Compiles to
+* html #logo {
+  background-image: url(/logo.gif);
+}
+

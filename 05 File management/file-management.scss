@@ -1,0 +1,217 @@
+/*
+ ______ _ _                                                                     _   
+|  ____(_) |                                                                   | |  
+| |__   _| | ___    _ __ ___   __ _ _ __   __ _  __ _  ___ _ __ ___   ___ _ __ | |_ 
+|  __| | | |/ _ \  | '_ ` _ \ / _` | '_ \ / _` |/ _` |/ _ \ '_ ` _ \ / _ \ '_ \| __|
+| |    | | |  __/  | | | | | | (_| | | | | (_| | (_| |  __/ | | | | |  __/ | | | |_ 
+|_|    |_|_|\___|  |_| |_| |_|\__,_|_| |_|\__,_|\__, |\___|_| |_| |_|\___|_| |_|\__|
+                                                 __/ |                              
+                                                |___/                               
+
+One of the more powerful features of Sass is the ability to serparate your stylsheets
+into separate files.
+
+Make use of the @import to include your individual files into one master stylesheet.
+
+Some things to note:
+* An underscore tells Sass not to compile this file
+* Because CSS is valid SCSS it's easy to conver vendor CSS to Sass
+* Build a structure that makes sense to you and your team
+
+
+.sass/
+|
+|--.globals/                  # Globals across all projects
+|  |-- _all.scss              # Include to get all globals
+|  |-- _variables.scss        # Global site varibles
+|  |-- _extends.scss          # Extend placeholder classes
+|  |-- _mixins.scss           # Useful mixins
+|  |-- _normalize.scss        # Sass ver of normalize
+|  |-- ...
+|
+|--.partials/
+|  |-- _buttons.scss          # Default button styles
+|  |-- _forms.scss            # Default form layout
+|  |-- _grid.scss             # Grid
+|  |-- _scaffolding.scss      # Global page structure
+|  |-- _typography.scss       # Fonts, etc
+|  |-- ...
+|
+|--.vendor/
+|  |-- _colorpicker.scss      # Styles for colour picket polifill
+|  |-- _jquery.ui.core.scss   # Styles for colour picket polifill
+|  |-- ...
+|
+`-- style.scss                # Main Sass file
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+  _____                                       _  __          _      __ _ _      
+ / ____|                                     (_)/ _|        | |    / _(_) |     
+| (___   __ _ ___ ___   _ __ ___   __ _ _ __  _| |_ ___  ___| |_  | |_ _| | ___ 
+ \___ \ / _` / __/ __| | '_ ` _ \ / _` | '_ \| |  _/ _ \/ __| __| |  _| | |/ _ \
+ ____) | (_| \__ \__ \ | | | | | | (_| | | | | | ||  __/\__ \ |_  | | | | |  __/
+|_____/ \__,_|___/___/ |_| |_| |_|\__,_|_| |_|_|_| \___||___/\__| |_| |_|_|\___|
+                                                                                
+The mail file that pulls all your Sass partials together.
+
+*/
+
+// Globals
+@import "globals/all";
+
+// Partials
+@import "partials/buttons";
+@import "partials/forms";
+@import "partials/grid";
+@import "partials/scaffolding";
+@import "partials/typography";
+
+// Vendor styles
+@import "vendor/colorpicker";
+@import "vendor/jquery.ui.core";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+         _                            _   
+   ____ (_)                          | |  
+  / __ \ _ _ __ ___  _ __   ___  _ __| |_ 
+ / / _` | | '_ ` _ \| '_ \ / _ \| '__| __|
+| | (_| | | | | | | | |_) | (_) | |  | |_ 
+ \ \__,_|_|_| |_| |_| .__/ \___/|_|   \__|
+  \____/            | |                   
+                    |_|                   
+
+@import takes a filename to import. By default, it looks for a Sass file to import directly, 
+but there are a few circumstances under which it will compile to a CSS @import rule:
+
+If the file’s extension is .css.
+If the filename begins with http://.
+If the filename is a url().
+If the @import has any media queries.
+*/
+
+
+@import "foo.css";
+@import "foo" screen;
+@import "http://foo.com/bar";
+@import url(foo);
+
+// would compile to
+
+@import "foo.css";
+@import "foo" screen;
+@import "http://foo.com/bar";
+@import url(foo);
+

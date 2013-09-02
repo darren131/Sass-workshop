@@ -1,0 +1,8 @@
+// import Compass
+@import "compass";
+
+//$icon-sprite-base-class: ".sprite-";
+@import "icon/*.png";
+
+// automagically generate class names
+@include all-icon-sprites;
